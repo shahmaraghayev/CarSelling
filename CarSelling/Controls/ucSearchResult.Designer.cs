@@ -36,7 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.Name = "ucSearchResult";
-            this.Size = new System.Drawing.Size(908, 357);
+            this.Size = new System.Drawing.Size(1072, 429);
             this.ResumeLayout(false);
 
         }

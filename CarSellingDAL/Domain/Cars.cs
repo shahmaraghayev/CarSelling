@@ -11,6 +11,7 @@ namespace CarSellingDAL.Domain
         public int Id { get; set; }
 
         public int? BrandId { get; set; }
+        public int? CarId { get; set; }
 
         public int? ModelId { get; set; }
 
@@ -37,6 +38,7 @@ namespace CarSellingDAL.Domain
         public bool? EURO { get; set; }
 
         public string Description { get; set; }
+        public string  Url { get; set; }
 
         public bool? AlloyWheels { get; set; }
 
@@ -69,6 +71,8 @@ namespace CarSellingDAL.Domain
         public int? BanTypeId { get; set; }
 
         public int? CitiId { get; set; }
+
+        public int Kilometerage { get; set; }
 
     }
 }

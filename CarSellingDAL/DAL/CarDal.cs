@@ -1,4 +1,5 @@
 ﻿using CarSellingDAL.Domain;
+using CarSellingDAL.ViewModel;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace CarSellingDAL.DAL
         {
             logger = LogManager.GetCurrentClassLogger();
         }
+
         public int Insert(Cars car)
         {
             try
@@ -53,9 +55,74 @@ namespace CarSellingDAL.DAL
                 parameters.Add(sqlHelper.CreateParameter("@UserId", car.UserId, DbType.Int32));
                 parameters.Add(sqlHelper.CreateParameter("@BanTypeId", car.BanTypeId, DbType.Int32));
                 parameters.Add(sqlHelper.CreateParameter("@CitiId", car.CitiId, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@Kilometerage", car.Kilometerage, DbType.Int32));
+                sqlHelper.Insert(            
+ " INSERT INTO Cars " +
+          " (BrandId " +
+           ",ModelId " +
+           ",ColorId " +
+           ",Price " +
+           ",FuelTypeId " +
+           ",TransmitionTypeId " +
+           ",GearboxTypeId " +
+           ",ManifactureDate " +
+           ",EngineCapaciyId " +
+           ",EnginePower " +
+           ",AZN " +
+           ",USD " +
+           ",EURO " +
+           ",Description " +
+           ",AlloyWheels " +
+           ",CentralClosure " +
+           ",LeatherSalon " +
+           ",SeatVentilation " +
+           ",ABS " +
+           ",ParkingRadar " +
+           ",KsenonLamps " +
+           ",Lyuk " +
+           ",Conditioner " +
+           ",RearViewCamera " +
+           ",RainSensor " +
+           ",SeatHeating " +
+           ",SideCurtains " +
+           ",UserId " +
+           ",BanTypeId " +
+           ",CitiId " +
+           ",Kilometerage) " +
+    " VALUES " +
+           "(@BrandId " +
+           ",@ModelId " +
+           ",@ColorId " +
+           ",@Price " +
+           ",@FuelTypeId " +
+           ",@TransmitionTypeId " +
+           ",@GearboxTypeId " +
+           ",@ManifactureDate " +
+           ",@EngineCapaciyId " +
+           ",@EnginePower " +
+           ",@AZN " +
+           ",@USD " +
+           ",@EURO " +
+           ",@Description " +
+           ",@AlloyWheels " +
+           ",@CentralClosure " +
+           ",@LeatherSalon " +
+           ",@SeatVentilation " +
+           ",@ABS " +
+           ",@ParkingRadar " +
+           ",@KsenonLamps " +
+           ",@Lyuk " +
+           ",@Conditioner "+
+           ",@RearViewCamera " +
+           ",@RainSensor " +
+           ",@SeatHeating " +
+           ",@SideCurtains " +
+           ",@UserId "+
+           ",@BanTypeId " +
+           ",@CitiId " +
+           ",@Kilometerage) ",
+            CommandType.Text, parameters.ToArray(), out lastId);
 
-                sqlHelper.Insert("INSERT INTO Cars(BrandId,ModelId,ColorId,Price,FuelTypeId,TransmitionTypeId,GearboxTypeId,ManifactureDate,EngineCpaciyId,EnginePower,AZN,USD,EURO,Description,AlloyWheels,CentralClosure,LeatherSalon,SeatVentilation,ABS,ParkingRadar,KsenonLamps,Lyuk,Conditioner,RearViewCamera,RainSensor,SeatHeating,SideCurtains,UserId,BanTypeId,CitiId) VALUES (@BrandId,@ModelId,@ColorId,@Price,@FuelTypeId,@TransmitionTypeId,@GearboxTypeId,@ManifactureDate,@EngineCpaciyId,@EnginePower,@AZN,@USD,@EURO,@Description,@AlloyWheels,@CentralClosure,@LeatherSalon,@SeatVentilation,@ABS,@ParkingRadar,@KsenonLamps,@Lyuk,@Conditioner,@RearViewCamera,@RainSensor,@SeatHeating,@SideCurtains,@UserId,@BanTypeId,@CitiId)",
-                    CommandType.Text, parameters.ToArray(), out lastId);
 
                 return lastId;
             }
@@ -70,9 +137,9 @@ namespace CarSellingDAL.DAL
         public Cars GetById(int id)
         {
             var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Id`", id, DbType.Int32));
+            parameters.Add(sqlHelper.CreateParameter("@Id", id, DbType.Int32));
 
-            var dataReader = sqlHelper.GetDataReader("SELECT BrandId,ModelId,ColorId,Price,FuelTypeId,TransmitionTypeId,GearboxTypeId,ManifactureDate,EngineCpaciyId,EnginePower,AZN,USD,EURO,Description,AlloyWheels,CentralClosure,LeatherSalon,SeatVentilation,ABS,ParkingRadar,KsenonLamps,Lyuk,Conditioner,RearViewCamera,RainSensor,SeatHeating,SideCurtains,UserId,BanTypeId,CitiIdFROM Cars WHERE d=@Id",
+            var dataReader = sqlHelper.GetDataReader("SELECT BrandId,ModelId,ColorId,Price,FuelTypeId,TransmitionTypeId,GearboxTypeId,ManifactureDate,EngineCpaciyId,EnginePower,AZN,USD,EURO,Description,AlloyWheels,CentralClosure,LeatherSalon,SeatVentilation,ABS,ParkingRadar,KsenonLamps,Lyuk,Conditioner,RearViewCamera,RainSensor,SeatHeating,SideCurtains,UserId,BanTypeId,CitiId FROM Cars WHERE d=@Id",
                 CommandType.Text, parameters.ToArray(), out connection);
 
             try
@@ -126,33 +193,89 @@ namespace CarSellingDAL.DAL
                 CloseConnection();
             }
         }
+        public int GetLastId()
+        {
+            int id = 0;
+
+            var parameters = new List<SqlParameter>();
+           
+            var dataReader = sqlHelper.GetDataReader("SELECT IDENT_CURRENT ('CarImages') Id", CommandType.Text, 
+                parameters.ToArray(), out connection);
+
+            try
+            {
+                while (dataReader.Read())
+                {
+                   id = Convert.ToInt32(dataReader["Id"]);
+     
+                }
+     
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "max id");
+
+                throw;
+            }
+            finally
+            {
+                dataReader.Close();
+                CloseConnection();
+            }
+            return id ;
+        }
 
         public IEnumerable<CarViewModel> GetAll()
         {
             var parameters = new List<SqlParameter>();
-            var dataReader = sqlHelper.GetDataReader("AllPersonnels", CommandType.StoredProcedure, null, out connection);
+            var dataReader = sqlHelper.GetDataReader("AllCars", CommandType.StoredProcedure, null, out connection);
 
             try
             {
-                var personnels = new List<PersonnelViewModel>();
+                var cars = new List<CarViewModel>();
                 while (dataReader.Read())
                 {
-                    var personnel = new PersonnelViewModel();
-                    personnel.Id = Convert.ToInt32(dataReader["Id"].ToString());
-                    personnel.Name = dataReader["Name"].ToString();
-                    personnel.Surname = dataReader["Surname"].ToString();
-                    personnel.OrganizationName = dataReader["OrganizationName"].ToString();
-                    personnel.Departamentname = dataReader["DepartmentName"].ToString();
-                    personnel.Email = dataReader["Email"].ToString();
-                    personnel.Status = Convert.ToInt32(dataReader["Status"].ToString());
-                    personnels.Add(personnel);
+                    var car = new CarViewModel();
+                    car.Id = Convert.ToInt32(dataReader["Id"].ToString());
+                    car.BrandName = Convert.ToInt32(dataReader["BrandName"].ToString());
+                    car.ModelName = Convert.ToInt32(dataReader["ModelName"].ToString());
+                    car.ColorName = Convert.ToInt32(dataReader["ColorName"].ToString());
+                    car.Price = Convert.ToDecimal(dataReader["Price"].ToString());
+                    car.FuelTypeName = Convert.ToInt32(dataReader["FuelTypeName"].ToString());
+                    car.TransmitionTypeName = Convert.ToInt32(dataReader["TransmitionTypeName"].ToString());
+                    car.GearboxTypeName = Convert.ToInt32(dataReader["GearboxTypeName"].ToString());
+                    car.ManifactureDate = Convert.ToDateTime(dataReader["ManifactureDate"].ToString());
+                    car.EngineCapaciyName = Convert.ToInt32(dataReader["EngineCapaciyName"].ToString());
+                    car.EnginePower = Convert.ToInt32(dataReader["EnginePower"].ToString());
+                    car.AZN = Convert.ToBoolean(dataReader["AZN"].ToString());
+                    car.USD = Convert.ToBoolean(dataReader["USD"].ToString());
+                    car.EURO = Convert.ToBoolean(dataReader["EURO"].ToString());
+                    car.Description =dataReader["Description"].ToString();
+                    car.AlloyWheels = Convert.ToBoolean(dataReader["AlloyWheels"].ToString());
+                    car.CentralClosure = Convert.ToBoolean(dataReader["CentralClosure"].ToString());
+                    car.LeatherSalon = Convert.ToBoolean(dataReader["LeatherSalon"].ToString());
+                    car.SeatVentilation = Convert.ToBoolean(dataReader["SeatVentilation"].ToString());
+                    car.ABS= Convert.ToBoolean(dataReader["ABS"].ToString());
+                    car.ParkingRadar = Convert.ToBoolean(dataReader["ParkingRadar"].ToString());
+                    car.KsenonLamps = Convert.ToBoolean(dataReader["KsenonLamps"].ToString());
+                    car.Lyuk = Convert.ToBoolean(dataReader["Lyuk"].ToString());
+                    car.Conditioner = Convert.ToBoolean(dataReader["Conditioner"].ToString());
+                    car.RearViewCamera = Convert.ToBoolean(dataReader["RearViewCamera"].ToString());
+                    car.RainSensor = Convert.ToBoolean(dataReader["RainSensor"].ToString());
+                    car.SeatHeating = Convert.ToBoolean(dataReader["SeatHeating"].ToString());
+                    car.SideCurtains = Convert.ToBoolean(dataReader["SideCurtains"].ToString());
+                    car.UserId = Convert.ToInt32(dataReader["UserId"].ToString());
+                    car.BanTypeName = Convert.ToInt32(dataReader["BanTypeName"].ToString());
+                    car.CitiName= Convert.ToInt32(dataReader["CitiName"].ToString());
+
+                    cars.Add(car);
                 }
 
-                return personnels;
+                return cars;
             }
             catch (Exception exp)
             {
-                logger.Error(exp, "PersonnelViewModel");
+                logger.Error(exp, "CarViewModel");
                 throw;
             }
             finally

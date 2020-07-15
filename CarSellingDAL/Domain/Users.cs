@@ -10,13 +10,15 @@ namespace CarSellingDAL.Domain
     {
         public int Id { get; set; }
 
+        public string Name { get; set; }
+
+        public string Number { get; set; }
+
         public string Email { get; set; }
 
         public string Password { get; set; }
 
         public int? Code { get; set; }
-
-        public DateTime CodeDate { get; set; }
 
         public DateTime CreateDate { get; set; }
 

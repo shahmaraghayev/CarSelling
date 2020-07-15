@@ -13,31 +13,31 @@ namespace CarSellingDAL.ViewModel
         public int Id { get; set; }
 
         [DisplayName("Marka")]
-        public int? BrandId { get; set; }
+        public int? BrandName { get; set; }
 
         [DisplayName("Model")]
-        public int? ModelId { get; set; }
+        public int? ModelName { get; set; }
 
         [DisplayName("Rəng")]
-        public int? ColorId { get; set; }
+        public int? ColorName { get; set; }
 
         [DisplayName("Ad")]
         public decimal? Price { get; set; }
 
         [DisplayName("Yanacaq növü")]
-        public int? FuelTypeId { get; set; }
+        public int? FuelTypeName { get; set; }
 
         [DisplayName("Ötürücü")]
-        public int? TransmitionTypeId { get; set; }
+        public int? TransmitionTypeName { get; set; }
 
         [DisplayName("Sürətlər qutusu")]
-        public int? GearboxTypeId { get; set; }
+        public int? GearboxTypeName { get; set; }
 
         [DisplayName("Buraxılış ili ")]
         public DateTime ManifactureDate { get; set; }
 
         [DisplayName("Mühərrikin həcmi")]
-        public int? EngineCapaciyId { get; set; }
+        public int? EngineCapaciyName { get; set; }
 
         [DisplayName("Mühərrikin gücü")]
         public int? EnginePower { get; set; }
@@ -97,9 +97,9 @@ namespace CarSellingDAL.ViewModel
         public int? UserId { get; set; }
 
         [DisplayName("Ban növü")]
-        public int? BanTypeId { get; set; }
+        public int? BanTypeName { get; set; }
 
         [DisplayName("Şəhər")]
-        public int? CitiId { get; set; }
+        public int? CitiName { get; set; }
     }
 }

@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CarSelling
+namespace CarSelling.Controls
 {
-    public partial class ucCars : UserControl
+    public partial class ucSearchCar : UserControl
     {
-        public ucCars()
+        public ucSearchCar()
         {
             InitializeComponent();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

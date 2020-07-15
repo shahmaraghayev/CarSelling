@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnUser = new System.Windows.Forms.Button();
+            this.btnPostAd = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.pnlSearch = new System.Windows.Forms.Panel();
             this.ucSearchResult1 = new CarSelling.ucSearchResult();
-            this.ucSearch1 = new CarSelling.ucSearch();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnlSearch.SuspendLayout();
             this.SuspendLayout();
@@ -42,36 +41,51 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(78)))));
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnUser);
+            this.panel1.Controls.Add(this.btnPostAd);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1169, 43);
+            this.panel1.Size = new System.Drawing.Size(1169, 37);
             this.panel1.TabIndex = 0;
             // 
-            // button2
+            // btnUser
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(233)))), ((int)(((byte)(146)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(754, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(146, 33);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Elan yerləşdir";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnUser.BackColor = System.Drawing.Color.Transparent;
+            this.btnUser.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUser.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnUser.Location = new System.Drawing.Point(780, 0);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Size = new System.Drawing.Size(184, 37);
+            this.btnUser.TabIndex = 3;
+            this.btnUser.UseVisualStyleBackColor = false;
+            // 
+            // btnPostAd
+            // 
+            this.btnPostAd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(233)))), ((int)(((byte)(146)))));
+            this.btnPostAd.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnPostAd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPostAd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPostAd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnPostAd.Location = new System.Drawing.Point(964, 0);
+            this.btnPostAd.Name = "btnPostAd";
+            this.btnPostAd.Size = new System.Drawing.Size(146, 37);
+            this.btnPostAd.TabIndex = 2;
+            this.btnPostAd.Text = "Elan yerləşdir";
+            this.btnPostAd.UseVisualStyleBackColor = false;
+            this.btnPostAd.Click += new System.EventHandler(this.btnPostAd_Click);
             // 
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.Gray;
+            this.btnLogin.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLogin.Location = new System.Drawing.Point(1036, 4);
+            this.btnLogin.Location = new System.Drawing.Point(1110, 0);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(59, 33);
+            this.btnLogin.Size = new System.Drawing.Size(59, 37);
             this.btnLogin.TabIndex = 1;
             this.btnLogin.Text = "Giriş";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -79,9 +93,9 @@
             // 
             // pnlSearch
             // 
-            this.pnlSearch.Controls.Add(this.ucSearch1);
+            
             this.pnlSearch.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSearch.Location = new System.Drawing.Point(0, 43);
+            this.pnlSearch.Location = new System.Drawing.Point(0, 37);
             this.pnlSearch.Name = "pnlSearch";
             this.pnlSearch.Size = new System.Drawing.Size(1169, 131);
             this.pnlSearch.TabIndex = 1;
@@ -90,29 +104,11 @@
             // 
             this.ucSearchResult1.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ucSearchResult1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucSearchResult1.Location = new System.Drawing.Point(0, 174);
+            this.ucSearchResult1.Location = new System.Drawing.Point(0, 168);
             this.ucSearchResult1.Name = "ucSearchResult1";
-            this.ucSearchResult1.Size = new System.Drawing.Size(1169, 312);
+            this.ucSearchResult1.Size = new System.Drawing.Size(1169, 318);
             this.ucSearchResult1.TabIndex = 2;
-            // 
-            // ucSearch1
-            // 
-            this.ucSearch1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.ucSearch1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ucSearch1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ucSearch1.Location = new System.Drawing.Point(0, 0);
-            this.ucSearch1.Name = "ucSearch1";
-            this.ucSearch1.Size = new System.Drawing.Size(1169, 126);
-            this.ucSearch1.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1122, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
+          
             // 
             // frmMain
             // 
@@ -126,9 +122,7 @@
             this.Name = "frmMain";
             this.Text = "MAŞIN ALQI SATQISI";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmMain_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.pnlSearch.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -137,12 +131,12 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPostAd;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Panel pnlSearch;
-        private ucSearch ucSearch1;
+      
         private ucSearchResult ucSearchResult1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnUser;
     }
 }
 

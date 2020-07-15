@@ -66,8 +66,7 @@ namespace CarSellingDAL.DAL
                     users.Email = dataReader["Name"].ToString();
                     users.Password = dataReader["Password"].ToString();
                     users.Code = dataReader["Code"] == System.DBNull.Value ? default(int) : (int)dataReader["Code"];
-                    users.CodeDate =Convert.ToDateTime(dataReader["CodeDate"]);
-                    users.CreateDate = Convert.ToDateTime(dataReader["CreateDate"]);
+                  
                     users.Salt = dataReader["Salt"].ToString();
                 }
 
