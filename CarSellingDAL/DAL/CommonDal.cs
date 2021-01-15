@@ -1,4 +1,5 @@
 ﻿using CarSellingDAL.ViewModel;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,6 +12,11 @@ namespace CarSellingDAL.DAL
 {
  public   class CommonDal:BaseDal
     {
+        Logger logger;
+        public CommonDal()
+        {
+            logger = LogManager.GetCurrentClassLogger();
+        }
         public IEnumerable<IdNameViewModel> GetBrandsByIdName()
         {
             var parameters = new List<SqlParameter>();
@@ -32,7 +38,7 @@ namespace CarSellingDAL.DAL
             }
             catch (Exception exp)
             {
-
+                logger.Error(" Brands");
                 throw;
             }
             finally
@@ -94,7 +100,7 @@ namespace CarSellingDAL.DAL
             }
             catch (Exception exp)
             {
-
+               ;
                 throw;
             }
             finally

@@ -20,16 +20,16 @@ namespace CarSelling
         ImageDal imageCrud;
         CommonDal common;
 
-      
+
         public frmPosAd()
         {
             InitializeComponent();
             common = new CommonDal();
-            carCrud =new CarDal();
-            imageCrud =new ImageDal();
+            carCrud = new CarDal();
+            imageCrud = new ImageDal();
             cbMarka.DataSource = common.GetBrandsByIdName();
             cbMarka.SelectedIndex = -1;
-            
+
             cbBodyType.DataSource = common.GetBanTypesByIdName();
             cbBodyType.SelectedIndex = -1;
             cbColor.DataSource = common.GetColorsByIdName();
@@ -51,6 +51,27 @@ namespace CarSelling
 
         private void btnSaveCar_Click(object sender, EventArgs e)
         {
+            if (cbMarka.SelectedValue == null ||
+                cbModel.SelectedValue == null ||
+               cbColor.SelectedValue == null ||
+               txtPrice.Text.Trim().Length == 0 ||
+               cbFuelType.SelectedValue == null ||
+               cbTransmission.SelectedValue == null ||
+               cbGearBox.SelectedValue == null ||
+               dateTimePicker1.Value == null ||
+               cbEngineCapacity.SelectedValue == null ||
+               txtEnginePower.Text.Trim().Length==0 ||
+               richTextBox1.Text.Trim().Length==0 ||
+               cbBodyType.SelectedValue==null ||
+               cbCity.SelectedValue==null ||
+               txtDriving.Text.Trim().Length==0
+               )
+
+            {
+                MessageBox.Show("Butun melumatlari daxil et");
+                return;
+            }
+            
             Cars car = new Cars();
             car.BrandId = Convert.ToInt32(cbMarka.SelectedValue);
             car.ModelId = Convert.ToInt32(cbModel.SelectedValue);
@@ -88,8 +109,8 @@ namespace CarSelling
             car.CitiId = Convert.ToInt32(cbCity.SelectedValue);
             car.Kilometerage = Convert.ToInt32(txtDriving.Text);
             int carId =  carCrud.Insert(car);
-            carId = carCrud.GetLastId();
-
+           // carId = carCrud.GetLastId();
+            ///duzeltsen
             foreach (var item in lstImagesPathes)
             {
                 string format = item.Substring(item.IndexOf('.'));
@@ -205,5 +226,7 @@ namespace CarSelling
                 throw;
             }
         }
+
+       
     }
 }

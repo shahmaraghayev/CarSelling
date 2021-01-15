@@ -58,7 +58,7 @@ namespace CarSelling.Utils
         public void SendCode(string reciver)
         {
             string email = "testingapplication93@gmail.com";
-            string password = "0702252723@@";
+            string password = "ZAQ_0702252723";
             try
             {
                 SmtpClient client = new SmtpClient("smtp.gmail.com", 587);//works if you have a gmail account

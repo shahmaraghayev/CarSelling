@@ -88,7 +88,7 @@ namespace CarSellingDAL.DAL
            ",UserId " +
            ",BanTypeId " +
            ",CitiId " +
-           ",Kilometerage) " +
+           ",Kilometerage)  Output Inserted.Id " +
     " VALUES " +
            "(@BrandId " +
            ",@ModelId " +

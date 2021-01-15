@@ -89,14 +89,5 @@ namespace CarSelling
             }
         }
 
-        private void t_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

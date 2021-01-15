@@ -1,4 +1,5 @@
-﻿using CarSelling.Sessions;
+﻿using CarSelling.Controls;
+using CarSelling.Sessions;
 using CarSellingDAL.DAL;
 using CarSellingDAL.Domain;
 using System;
@@ -56,13 +57,14 @@ namespace CarSelling
 
         private void ucSearch1_Load(object sender, EventArgs e)
         {
-          
 
         }
 
-        private void pnlMain_Paint(object sender, PaintEventArgs e)
+        private void frmMain_Load(object sender, EventArgs e)
         {
-
+            ucSearch uSearch = new ucSearch();
+            this.panelMain.Controls.Add(uSearch);
+            uSearch.Dock = System.Windows.Forms.DockStyle.Fill;
         }
     }
 }

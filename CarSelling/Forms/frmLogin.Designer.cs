@@ -460,7 +460,6 @@
             this.txtTextEmail.Name = "txtTextEmail";
             this.txtTextEmail.Size = new System.Drawing.Size(263, 29);
             this.txtTextEmail.TabIndex = 1;
-            this.txtTextEmail.TextChanged += new System.EventHandler(this.t_TextChanged);
             // 
             // frmLogin
             // 
@@ -474,7 +473,6 @@
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.Name = "frmLogin";
             this.Text = "frmLogin";
-            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
